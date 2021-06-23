@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>YellowBox</title>
+<link rel="stylesheet" href="asset/yellowbox.css">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <header class="gnb">
+        <h1><a href="javascript:void(0);">YellowBox</a></h1>
+        <nav>
+            <a href="javascript:void(0);">Special</a>
+            <a href="javascript:void(0);">Auction</a>
+            <a href="javascript:void(0);">Open Market</a>
+            <a href="javascript:void(0);">SignIn</a>
+        </nav>
+    </header>
+
+    <section class="search-area">
+        <div class="inner">
+            <input type="search" placeholder="ex) Pop art...">
+            <ul class="recent">
+                <li><h4>Recent data</h4></li>
+                <li><a href="javascript:void(0);">Marilin Monro</a></li>
+                <li><a href="javascript:void(0);">Pop art</a></li>
+                <li><a href="javascript:void(0);">Photography</a></li>
+                <li><a href="javascript:void(0);">Handmade Figure</a></li>
+                <li><a href="javascript:void(0);">Fabric art</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn-search">Search</button>
+    </section>
+
+    <section class="hero">
+        <div class="msg">
+            <strong>YellowBox</strong>
+            <div class="desc">
+                <p>Digital Creative Art Platform<br/>Begin your NFT collection_</p>
+                <a href="javascript:void(0);" data-arrow='↘'>Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="introduce">
+        <div class="msg">
+            <span>Art For</span>
+            <span>Everyone</span>
+            <span>Platform For</span>
+            <span>Every Artist</span>
+        </div>
+        <div class="arts">
+            <img src="arts/00.jpeg" />
+            <img src="arts/01.jpeg" />
+            <img src="arts/02.jpeg" />
+            <img src="arts/03.jpeg" />
+            <img src="arts/04.jpeg" />
+            <img src="arts/05.jpeg" />
+            <img src="arts/06.jpeg" />
+            <img src="arts/07.jpeg" />
+        </div>
+    </section>
+
+    <section class="discover">
+        <div class="cardbox">
+            <h4>
+                <span>YellowBox</span>
+                <span>Auction</span>
+            </h4>
+            <p>Decentralized premium English auction for distinguished creative works. Become the first owner of highly-sought digital arts.</p>
+            <a href="javascript:void(0);">Explore</a>
+        </div>
+        <div class="cardbox">
+            <h4>
+                <span>YellowBox</span>
+                <span>Open Market</span>
+            </h4>
+            <p>Online and on-chain marketplace for the tokenized artworks created by our selected artists.</p>
+            <a href="javascript:void(0);">Explore</a>
+        </div>
+    </section>
+
+    <section class="collection">
+        <div class="msg">
+            <span>Discover &amp; Collect</span>
+            <span>Authentic Digital Art</span>
+            <a href="javascript:void(0);">Start Your Collection</a>
+        </div>
+    </section>
+
+    <section class="artists">
+        <div class="msg">
+            <p>We've been waiting for your work.</p>
+            <a href="javascript:void(0);">I'm a Artist</a>
+            <a href="javascript:void(0);">Show all artists</a>
+        </div>
+    </section>
+
+    <footer class="copyright">
+        <form action="javascript:void(0);">
+            <label>Can we send you a letter?</label>
+            <input type="email" placeholder="ex) your@email.truly" />
+            <button type="submit" hidden>Subscribe</button>
+        </form>
+        <div class="inner">
+            <div class="brand">
+                <strong>YellowBox</strong>
+                <h6>2021 &copy; all rights reserved.</h6>
+            </div>
+            <nav class="social">
+                <a href="javascipt:void(0);">Community</a>
+                <a href="javascipt:void(0);">Instagram</a>
+                <a href="javascipt:void(0);">Naver</a>
+                <a href="javascipt:void(0);">Medium</a>
+                <a href="javascipt:void(0);">Twitter</a>
+            </nav>
+            <nav class="global">
+                <a href="javascipt:void(0);">Terms and Conditions</a>
+                <a href="javascipt:void(0);">Privacy Policy</a>
+                <a href="javascipt:void(0);">Contact Us</a>
+            </nav>
+        </div>
+    </footer>
+</div>
+
+
+<script type="text/javascript">
+    //
+    //  빠른 호출용 정의
+    //
+    const btnSearch = document.querySelector('.btn-search');
+    const areaSearch = document.querySelector('.search-area');
+    
+    //
+    //  모달 닫기 버튼 클릭시 모달 닫기
+    //
+    btnSearch.onclick = function() {
+        areaSearch.classList.toggle('is-open');
+    }
+    
+</script>
+
+</body>
+
+</html>
