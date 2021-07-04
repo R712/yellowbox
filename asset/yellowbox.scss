@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;800&family=Abril+Fatface&display=swap');
+@import url('./animate.css');
+
 @font-face {
     font-family: 'open-arrow';
     src: url('font/OpenArrow-Regular.eot') format('embedded-opentype'),
@@ -18,7 +20,6 @@ $white: #FFF;
 $blue: #009FFF;
 input:focus {
     outline: none;
-    background-color: rgba($yellow, .1) !important;
     transition: ease-in-out all .15s;
 }
 
@@ -42,11 +43,17 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.55;
     cursor: default;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .wrapper {
     position: relative;
     background: #FFF;
+}
+
+section {
+    min-height: 880px;
 }
 
 .gnb {
@@ -55,10 +62,11 @@ body {
     top: 0;
     position: fixed;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     background: rgba($white, .9);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 50px;
     backdrop-filter: blur(10px);
     a {
@@ -67,14 +75,17 @@ body {
     }
     h1 {
         padding: 24px 40px 0;
+        min-width: 320px;
         font-family: 'Abril Fatface', georgia, serif;
         font-size: 22px;
         letter-spacing: 1px;
     }
     nav {
         display: flex;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
+        min-width: 320px;
         a {
             position: relative;
             padding: 24px 0;
@@ -104,12 +115,38 @@ body {
                     height: 100px;
                     background: url('../images/blob.svg') no-repeat left bottom;
                     background-size: 180px;
-                }
-                &:hover::before {
-                    transform: rotate(5deg) scale(1.75);
+                    animation: yellowBlob 2s cubic-bezier(.17,.67,.83,.67) infinite;
                 }
             }
         }
+    }
+    .btn-signin {
+        margin: 0 32px;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        background: url('../images/signin.svg') no-repeat center;
+        text-indent: -9999px;
+        cursor: pointer;
+        transition: all .25s cubic-bezier(.17,.67,.83,.67);
+        border-radius: 50%;
+        &:hover {
+            background-color: $yellow;
+        }
+    }
+    .btn-search {
+        z-index: 1000;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin: 20px 0 0 -20px;
+        width: 58px;
+        height: 58px;
+        border: 0;
+        background: transparent url('../images/search.svg') no-repeat center;
+        text-indent: -9999px;
+        cursor: pointer;
+        border-radius: 50%;
     }
 }
 
@@ -117,18 +154,17 @@ body {
     z-index: 500;
     position: fixed;
     left: 0;
-    top: 0;
+    top: -100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background: $white;
     width: 100%;
     box-shadow: 0 0 120px rgba($dark, .25);
-    transition: ease-in-out all .15s;
+    transition: all .25s cubic-bezier(.17,.67,.83,.67);
     .inner {
         width: 100%;
-        height: 0;
         overflow: hidden;
         transition: ease-in-out all .15s;
     }
@@ -143,7 +179,7 @@ body {
         background: $white url('../images/search.svg') no-repeat 40px center;
         padding: 0 12px;
         width: 100%;
-        height: 80px;
+        height: 98px;
         color: $dark;
         font-size: 24px;
         text-align: center;
@@ -167,35 +203,29 @@ body {
             }
         }
     }
-    .btn-search {
+    &.is-open {
+        top: 0;
+    }
+    .btn-close {
+        z-index: 1000;
         position: absolute;
-        left: 50%;
-        bottom: -98px;
-        width: 98px;
-        height: 98px;
+        right: 0;
+        top: 0;
+        margin: 20px;
+        width: 58px;
+        height: 58px;
         border: 0;
-        background: transparent url('../images/search.svg') no-repeat center;
+        background: transparent url('../images/close.svg') no-repeat center;
         text-indent: -9999px;
         cursor: pointer;
         border-radius: 50%;
-    }
-    &.is-open {
-        .inner {
-            height: auto;
-            transition: ease-in-out all .15s;
-        }
-        .btn-search {
-            background: $white url('../images/close.svg') no-repeat center;
-            transform: translateY(20px);
-        }
     }
 }
 
 .hero {
     position: relative;
-    height: 88vh;
-    background-size: cover;
-    overflow: hidden;
+    padding: 18vw 8vw;
+    background: $white;
     &::after {
         content: '';
         position: absolute;
@@ -205,49 +235,104 @@ body {
         height: 100%;
         background-size: cover;
     }
-    .msg {
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 88vh;
+    .logoart {
+        position: relative;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin: 40px;
+        padding: 40px;
+        width: 40vh;
+        height: 40vh;
         color: $dark;
+        font-size: 148px;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -100px;
+            margin-top: 0;
+            margin-left: -200px;
+            width: 360px;
+            height: 300px;
+            background: url('../images/blob.svg') no-repeat center top;
+            background-size: 360px;
+            animation: yellowBlob 2s cubic-bezier(.17,.67,.83,.67) infinite;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            right: 50%;
+            bottom: -100px;
+            margin-top: 0;
+            margin-left: -200px;
+            width: 320px;
+            height: 300px;
+            background: url('../images/blob.svg') no-repeat center top;
+            background-size: 240px;
+            animation: yellowBlob 2s cubic-bezier(.17,.67,.83,.67) infinite;
+        }
         strong {
+            z-index: 1;
             position: relative;
-            margin: 24px 16px;
-            padding: 0 24px;
             color: $dark;
-            font-size: 100px;
             font-family: 'Abril Fatface', georgia, serif;
             letter-spacing: 4px;
-            &::before {
-                z-index: -1;
-                content: '';
-                position: absolute;
-                left: 50%;
-                top: -72px;
-                margin-top: 0;
-                margin-left: -160px;
-                width: 320px;
-                height: 300px;
-                background: url('../images/blob.svg') no-repeat center top;
-                background-size: 320px;
+        }
+        img {
+            position: absolute;
+            left: 0;
+            top: -80px;
+            width: 100%;
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+        .info-artist {
+            z-index: 1;
+            position: absolute;
+            right: -80px;
+            top: 24px;
+            color: $gray;
+            font-size: 11px;
+            transition: all 1s cubic-bezier(.17,.67,.83,.67);
+            &:hover {
+                color: $yellow;
+                text-decoration: line-through;
+                cursor: help;
             }
         }
-        .desc {
+        &:hover {
+            img {
+                filter: none;
+                transition: all 1s cubic-bezier(.17,.67,.83,.67);
+            }
+        }
+    }
+    .msg {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: $yellow;
+        p {
+            z-index: 100;
+            position: relative;
+            color: $dark;
             font-weight: 700;
             font-size: 24px;
         }
         a {
+            z-index: 100;
             position: relative;
             display: block;
-            margin-top: 24px;
+            margin-top: 40px;
             padding: 24px 32px;
+            min-width: 280px;
+            max-width: 360px;
+            width: 20vw;
             background: $dark;
             color: $white;
             font-weight: 600;
@@ -275,6 +360,17 @@ body {
             }
         }
     }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12vw;
+        margin-left: -2px;
+        width: 1px;
+        height: 24vw;
+        border-left: 1px solid $yellow;
+        transform: rotate(45deg);
+    }
 }
 
 .introduce {
@@ -283,7 +379,7 @@ body {
         z-index: 1;
         position: absolute;
         left: 40px;
-        bottom: -150px;
+        bottom: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -297,6 +393,7 @@ body {
 }
 
 .arts {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     width: 1480px;
@@ -308,9 +405,9 @@ body {
         width: 300px;
         border-radius: 3px;
         &:hover {
-            filter: grayscale(0);
             transition: ease-in-out all .15s;
             transform: scale(1.05);
+            box-shadow: 0 0 40px rgba($dark, .1);
         }
         &:nth-child(even) {
             transform: translateY(-80px);
@@ -319,21 +416,46 @@ body {
             }
         }
     }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12vw;
+        margin-left: -2px;
+        width: 1px;
+        height: 24vw;
+        border-left: 1px solid $yellow;
+        transform: rotate(45deg);
+    }
 }
 
 .discover {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    margin: 120px 120px 120px 0;
     padding: 100px;
-    background: url('../arts/paint.jpeg') no-repeat center fixed;
     background-size: cover;
     border-radius: 0 80px 80px 0;
+    &::after,
+    &::before {
+        content: '';
+        z-index: 10;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        width: 1px;
+        height: 48px;
+        background: $yellow;
+        transform: rotate(45deg);
+    }
+    &::before {
+        transform: rotate(-45deg);
+    }
     .cardbox {
         padding: 120px 80px;
-        max-width: 560px;
+        max-width: 520px;
         h4 {
             margin-bottom: 12px;
             font-size: 24px;
@@ -348,14 +470,6 @@ body {
             &:last-child {
                 font-size: 48px;
             }
-        }
-        &:nth-child(1) {
-            background: url('../images/auction.svg') no-repeat left bottom;
-            background-size: 120px;
-        }
-        &:nth-child(2) {
-            background: url('../images/market.svg') no-repeat right 30%;
-            background-size: 120px;
         }
         a {
             position: relative;
@@ -382,18 +496,34 @@ body {
 }
 
 .collection {
-    margin: 120px 0 120px 120px;
+    position: relative;
     padding: 200px;
-    background: url('../images/collection.png') no-repeat center bottom fixed;
-    background-size: 100%;
-    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        position: absolute;
+        left: 12vw;
+        top: 50%;
+        margin-top: -24vw;
+        width: 36vw;
+        border-radius: 12px;
+        box-shadow: 0 0 120px rgba($dark, .4);
+    }
     .msg {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 12vw;
         color: $yellow;
         font-weight: 800;
-        font-size: 100px;
+        font-size: 6vw;
         line-height: 1.1;
         span {
-            mix-blend-mode: multiply;
+            z-index: 1;
+            position: relative;
         }
         a {
             position: relative;
@@ -418,11 +548,25 @@ body {
             }
         }
     }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -12vw;
+        margin-left: -2px;
+        width: 100vw;
+        height: 1px;
+        background: $yellow;
+        transform: rotate(45deg);
+    }
 }
 
 .artists {
     position: relative;
-    padding: 100px 0 240px;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     p {
         margin-bottom: 40px;
@@ -449,12 +593,13 @@ body {
     &::before {
         content: '';
         position: absolute;
-        left: 50%;
+        left: 12vw;
         bottom: 0;
         margin-left: -2px;
-        width: 1px;
-        height: 150px;
-        border-left: 4px dashed $yellow;
+        width: 24vw;
+        height: 1px;
+        background: $yellow;
+        transform: rotate(-45deg);
     }
 }
 
@@ -473,9 +618,9 @@ a[data-arrow] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: $dark;
-    color: $gray;
+    justify-content: space-between;
+    background: lighten($dark, 90%);
+    color: #999;
     .inner {
         display: flex;
         align-items: flex-start;
@@ -485,16 +630,35 @@ a[data-arrow] {
         padding: 80px 40px;
     }
     .brand {
+        min-width: 320px;
         width: 50%;
         strong {
-            color: $yellow;
+            color: #333;
             font-size: 36px;
             font-family: 'Abril Fatface', georgia, serif;
         }
         h6 {
+            color: #333;
             font-weight: 400;
-            font-size: 16px;
-            letter-spacing: 1px;
+            font-size: 10px;
+        }
+    }
+    .social {
+        margin-top: 16px;
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+            background: url('../images/sns-naver.svg') no-repeat center;
+            background-size: 24px;
+            text-indent: -9999px;
+            &:nth-child(2) {
+                background-image: url('../images/sns-medium.svg');
+            }
+            &:nth-child(3) {
+                background-image: url('../images/sns-twitter.svg');
+            }
         }
     }
     nav {
@@ -503,10 +667,62 @@ a[data-arrow] {
         a {
             margin: 5px 0;
             padding: 5px;
-            color: $white;
-            font-size: 16px;
+            color: #333;
+            font-size: 12px;
             &:hover {
-                color: $yellow;
+                text-decoration: line-through;
+            }
+        }
+    }
+    .select-lang {
+        position: relative;
+        margin: 5px;
+        button {
+            padding-right: 24px;
+            width: 70px;
+            height: 40px;
+            border: 1px solid transparent;
+            background: rgba($gray, .1) url('../images/dropdown.svg') no-repeat 85% center;
+            background-size: 12px;
+            font-size: 24px;
+            border-radius: 3px;
+            cursor: pointer;
+            &:hover {
+                border: 1px solid rgba($gray, .25);
+            }
+        }
+        ul {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: -1px;
+            width: 100px;
+            list-style: none;
+            border: 1px solid rgba($gray, .4);
+            background: $white;
+            font-size: 13px;
+            border-radius: 3px 0 3px 3px;
+            li {
+                padding: 0 12px;
+                line-height: 40px;
+                cursor: pointer;
+                &:hover {
+                    background: rgba($gray, .1);
+                    color: $dark;
+                }
+                & + li {
+                    border-top: 1px solid rgba($gray, .1);
+                }
+            }
+        }
+        &.is-open {
+            button {
+                border: 1px solid rgba($gray, .25);
+                border-radius: 3px 3px 0 0;
+            }
+            ul {
+                display: block;
             }
         }
     }
@@ -517,7 +733,6 @@ a[data-arrow] {
         align-items: center;
         padding: 80px;
         width: 100%;
-        background: url('../arts/deco.jpeg') no-repeat center fixed;
         background-size: cover;
         color: $dark;
         &::before {
@@ -542,11 +757,191 @@ a[data-arrow] {
             border: 3px solid $dark;
             background: $white url('../images/mail.svg') no-repeat 3% center;
             padding: 0 12px;
-            width: 560px;
+            max-width: 560px;
+            width: 100%;
             height: 60px;
             color: $dark;
             font-size: 18px;
             text-align: center;
+        }
+    }
+}
+
+
+//
+//  대기용 커밍순  
+//
+.soon {
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    bottom: -100vh;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    mix-blend-mode: multiply;
+    background: rgba($white, .9);
+    color: rgba($dark, .05);
+    font-weight: 700;
+    font-size: 148px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    word-break: keep-all;
+    backdrop-filter: blur(100px);
+    transition: all .25s cubic-bezier(.17,.67,.83,.67);
+    opacity: 0;
+    button {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: -120px 0 0 -120px;
+        width: 240px;
+        height: 240px;
+        border: 0;
+        background: transparent;
+        font-size: 72px;
+        animation: rotating 8s linear infinite;
+        transition: all .2s cubic-bezier(.17,.67,.83,.67);
+        cursor: pointer;
+    }
+    &.is-open {
+        bottom: 0;
+        opacity: 1;
+        button {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes yellowBlob {
+    0% {
+        transform: skew(0deg);
+    }
+    40% {
+        transform: skewX(5deg) scale(0.95);
+    }
+    65% {
+        transform: skewY(-5deg);
+    }
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+@media (max-width: 880px) {
+    body,
+    .wrapper {
+        max-width: 100vw;
+    }
+    section {
+        min-height: 100vh;
+    }
+    .gnb {
+        h1 {
+            display: none;
+            padding: 16px 40px;
+        }
+        nav {
+            display: none;
+        }
+    }
+    .hero {
+        height: 100vh;
+        .msg {
+            flex-direction: column;
+            height: 100vh;
+            strong {
+                margin: 0;
+                font-size: 48px;
+            }
+            .desc {
+                margin-top: 16px;
+                font-size: 16px;
+            }
+        }
+    }
+    .introduce {
+        .msg {
+            bottom: -40px;
+            font-size: 48px;
+        }
+    }
+    .arts {
+        margin: 0 -10px;
+        width: calc(100vw + 20px);
+        max-height: 100vh;
+        img {
+            margin: 10px;
+            width: 40vw;
+        }
+    }
+    .discover {
+        margin: 15vw;
+        padding: 40px 0;
+        background: none;
+        .cardbox {
+            padding: 40px 0;
+            background: none !important;
+            span:last-child {
+                font-size: 36px;
+            }
+            a {
+                padding: 16px 24px;
+            }
+            & + .cardbox {
+                border-top: 1px solid rgba($gray, .25);
+            }
+        }
+    }
+    .collection {
+        display: none;
+    }
+    .artists {
+        padding: 15vw;
+        p {
+            font-size: 36px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            width: auto;
+        }
+    }
+    .copyright {
+        form {
+            padding: 40px;
+            label {
+                font-size: 36px;
+            }
+        }
+        .inner {
+            flex-direction: column;
+            flex-wrap: wrap;
+            padding: 40px;
+            width: 100%;
+            min-width: inherit;
+        }
+        .brand {
+            margin-bottom: 20px;
+            width: inherit;
+        }
+        nav {
+            margin: 20px 0;
+            a {
+                font-size: 14px;
+            }
         }
     }
 }
