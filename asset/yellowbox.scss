@@ -855,8 +855,11 @@ a[data-arrow] {
 @media (max-width: 880px) {
     body,
     .wrapper {
-        min-width: 100%;
-        max-width: 100%;
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+    .wrapper {
+        overflow: hidden;
     }
     section {
         min-height: 100vh;
@@ -894,7 +897,7 @@ a[data-arrow] {
         .btn-search {
             top: 10px;
             left: 100%;
-            margin-left: -80px;
+            margin-left: -64px;
         }
     }
     .search-area {
@@ -904,7 +907,7 @@ a[data-arrow] {
             font-size: 18px;
         }
         .btn-close {
-            margin-top: 10px;
+            margin: 10px;
         }
     }
     .hero {
