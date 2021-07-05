@@ -1211,10 +1211,29 @@ a[data-arrow]:hover::after {
     padding: 16px 24px;
   }
   .discover .cardbox + .cardbox {
-    border-top: 1px solid rgba(170, 170, 170, 0.25);
+    margin-top: 80px;
   }
   .collection {
-    display: none;
+    padding: 40px;
+  }
+  .collection img {
+    left: -16vw;
+    width: 100vw;
+  }
+  .collection .msg {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding-left: 0;
+    width: 100%;
+  }
+  .collection .msg a {
+    width: 100%;
+  }
+  .collection .msg span {
+    font-size: 12vw;
+    text-transform: uppercase;
   }
   .artists {
     padding: 15vw;
