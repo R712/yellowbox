@@ -1196,11 +1196,16 @@ a[data-arrow]:hover::after {
     margin: 0;
     padding: 4vw 0;
     width: 100%;
-    font-size: 5vw;
+    font-size: 20px;
     text-align: center;
   }
   .gnb nav .btn-signin {
     height: 80px;
+    background-size: 24px;
+  }
+  .gnb nav .btn-signin:hover {
+    background-color: transparent !important;
+    opacity: .6;
   }
   .gnb .btn-search {
     top: 10px;

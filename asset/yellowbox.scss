@@ -927,11 +927,16 @@ a[data-arrow] {
                 margin: 0;
                 padding: 4vw 0;
                 width: 100%;
-                font-size: 5vw;
+                font-size: 20px;
                 text-align: center;
             }
             .btn-signin {
                 height: 80px;
+                background-size: 24px;
+                &:hover {
+                    background-color: transparent !important;
+                    opacity: .6;
+                }
             }
         }
         .btn-search {
