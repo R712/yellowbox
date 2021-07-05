@@ -1019,7 +1019,7 @@ a[data-arrow]:hover::after {
   opacity: 0;
 }
 
-.soon button {
+.soon .time {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -1033,7 +1033,7 @@ a[data-arrow]:hover::after {
           animation: rotating 8s linear infinite;
   -webkit-transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-  cursor: pointer;
+  cursor: default;
 }
 
 .soon.is-open {
@@ -1042,9 +1042,32 @@ a[data-arrow]:hover::after {
   opacity: 1;
 }
 
-.soon.is-open button {
+.soon.is-open .time {
   -webkit-transform: scale(1) rotate(360deg);
           transform: scale(1) rotate(360deg);
+}
+
+.soon .btn {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin: 80px 0 0 -75px;
+  width: 150px;
+  height: 60px;
+  border: 0;
+  background: #000;
+  color: #FFC321;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.soon .btn:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 @-webkit-keyframes rotating {
@@ -1121,13 +1144,14 @@ a[data-arrow]:hover::after {
   }
   .gnb {
     z-index: 500;
+    display: block;
     height: 78px;
     -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
   }
   .gnb h1 {
     position: relative;
-    padding: 16px 40px;
+    height: 78px;
     text-indent: -9999px;
   }
   .gnb h1::after {
@@ -1138,6 +1162,8 @@ a[data-arrow]:hover::after {
     width: 20px;
     height: 2px;
     background: #000;
+    -webkit-transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
   .gnb h1::before {
     content: '';
@@ -1147,14 +1173,53 @@ a[data-arrow]:hover::after {
     width: 14px;
     height: 2px;
     background: #000;
+    -webkit-transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
   .gnb nav {
-    display: none;
+    position: fixed;
+    left: 0;
+    top: -100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    overflow: hidden;
+    -webkit-transition: all 0.25s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transition: all 0.25s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+  .gnb nav a {
+    margin: 0;
+    padding: 4vw 0;
+    width: 100%;
+    font-size: 5vw;
+    text-align: center;
+  }
+  .gnb nav .btn-signin {
+    height: 80px;
   }
   .gnb .btn-search {
     top: 10px;
     left: 100%;
     margin-left: -64px;
+  }
+  .gnb.is-open nav {
+    top: 78px;
+  }
+  .gnb.is-open h1::after {
+    top: 34px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .gnb.is-open h1::before {
+    top: 34px;
+    width: 20px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
   }
   .search-area input {
     height: 78px;
@@ -1278,7 +1343,6 @@ a[data-arrow]:hover::after {
   }
   .soon {
     z-index: 1200;
-    padding: 40px;
     font-size: 12vw;
   }
 }

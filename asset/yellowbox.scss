@@ -801,7 +801,7 @@ a[data-arrow] {
     backdrop-filter: blur(100px);
     transition: all .25s cubic-bezier(.17,.67,.83,.67);
     opacity: 0;
-    button {
+    .time {
         position: fixed;
         left: 50%;
         top: 50%;
@@ -813,14 +813,33 @@ a[data-arrow] {
         font-size: 72px;
         animation: rotating 8s linear infinite;
         transition: all .2s cubic-bezier(.17,.67,.83,.67);
-        cursor: pointer;
+        cursor: default;
     }
     &.is-open {
         top: 0;
         bottom: 0;
         opacity: 1;
-        button {
+        .time {
             transform: scale(1) rotate(360deg);
+        }
+    }
+    .btn {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin: 80px 0 0 -75px;
+        width: 150px;
+        height: 60px;
+        border: 0;
+        background: $dark;
+        color: $yellow;
+        font-weight: 600;
+        font-size: 18px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all .15s cubic-bezier(.17,.67,.83,.67);
+        &:hover {
+            transform: scale(1.05);
         }
     }
 }
@@ -866,11 +885,12 @@ a[data-arrow] {
     }
     .gnb {
         z-index: 500;
+        display: block;
         height: 78px;
         backdrop-filter: blur(10px);
         h1 {
             position: relative;
-            padding: 16px 40px;
+            height: 78px;
             text-indent: -9999px;
             &::after {
                 content: '';
@@ -880,6 +900,7 @@ a[data-arrow] {
                 width: 20px;
                 height: 2px;
                 background: $dark;
+                transition: all .15s cubic-bezier(.17,.67,.83,.67);
             }
             &::before {
                 content: '';
@@ -889,15 +910,50 @@ a[data-arrow] {
                 width: 14px;
                 height: 2px;
                 background: $dark;
+                transition: all .15s cubic-bezier(.17,.67,.83,.67);
             }
         }
         nav {
-            display: none;
+            position: fixed;
+            left: 0;
+            top: -100vh;
+            flex-direction: column;
+            width: 100%;
+            background: rgba($white, .9);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all .25s cubic-bezier(.17,.67,.83,.67);
+            a {
+                margin: 0;
+                padding: 4vw 0;
+                width: 100%;
+                font-size: 5vw;
+                text-align: center;
+            }
+            .btn-signin {
+                height: 80px;
+            }
         }
         .btn-search {
             top: 10px;
             left: 100%;
             margin-left: -64px;
+        }
+        &.is-open {
+            nav {
+                top: 78px;
+            }
+            h1 {
+                &::after {
+                    top: 34px;
+                    transform: rotate(45deg);
+                }
+                &::before {
+                    top: 34px;
+                    width: 20px;
+                    transform: rotate(-45deg);
+                }
+            }
         }
     }
     .search-area {
@@ -1018,7 +1074,6 @@ a[data-arrow] {
     }
     .soon {
         z-index: 1200;
-        padding: 40px;
         font-size: 12vw;
     }
 }

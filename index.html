@@ -148,7 +148,8 @@
     <span>coming soon</span>
     <span>coming soon</span>
     <span>coming soon</span>
-    <button>⏳</button>
+    <button class="time">⏳</button>
+    <button class="btn">BACK ↩︎</button>
 </div>
 
 <script src="asset/wow.min.js"></script>
@@ -161,11 +162,12 @@ const btnSearch = document.querySelector('.btn-search');
 const areaSearch = document.querySelector('.search-area');
 const btnSearchClose = document.querySelector('.btn-close');
 const soonLayer = document.querySelector('.soon');
-const soonClose = document.querySelector('.soon button');
+const soonClose = document.querySelector('.soon .btn');
 const callSoon = document.querySelector('.gnb nav');
 const btnLang = document.querySelector('.select-lang button');
 const areaLang = document.querySelector('.select-lang');
 const logo = document.querySelector('.gnb h1');
+const gnb = document.querySelector('.gnb');
 
 //
 //  모달 닫기 버튼 클릭시 모달 닫기
@@ -183,7 +185,7 @@ callSoon.onclick = function() {
 }
 
 logo.onclick = function() {
-    soonLayer.classList.toggle('is-open');
+    gnb.classList.toggle('is-open');
 }
 
 soonClose.onclick = function() {
