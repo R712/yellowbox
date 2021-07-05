@@ -1,10 +1,10 @@
 # 💛
-## yellowbox
+## YellowBox
 
 **👉🏻 https://r712.github.io/yellowbox**
 
 - added coming soon design
-- added search area
+- added search areaCancel changes
 
 ----
 
