@@ -2,6 +2,9 @@
 
 https://r712.github.io/yellowbox
 
+- added coming soon design
+- added search area
+
 - html
 - pure javascript
 - scss
@@ -12,3 +15,5 @@ https://r712.github.io/yellowbox
 - yellow mix blur concept
 - responsive for mobile (still not perfect)
 - focus the art
+
+hope you enjoy 🙋🏻‍♂️
