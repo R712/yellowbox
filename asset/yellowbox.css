@@ -32,16 +32,24 @@ a:hover * {
   transition: ease-in-out all .15s;
 }
 
+html {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  position: relative;
   font-family: 'Inter', sans-serif;
   line-height: 1.55;
   cursor: default;
-  overflow-y: auto;
+  overflow: auto;
   overflow-x: hidden;
 }
 
 .wrapper {
   position: relative;
+  width: 100%;
   background: #FFF;
 }
 
@@ -50,16 +58,13 @@ section {
 }
 
 .gnb {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   z-index: 50;
   top: 0;
+  left: 0;
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -159,8 +164,8 @@ section {
   z-index: 1000;
   position: absolute;
   left: 50%;
-  top: 0;
-  margin: 20px 0 0 -20px;
+  top: 20px;
+  margin: 0 0 0 -29px;
   width: 58px;
   height: 58px;
   border: 0;
@@ -982,9 +987,10 @@ a[data-arrow]:hover::after {
   z-index: 1000;
   position: fixed;
   left: 0;
-  bottom: -100vh;
-  width: 100vw;
-  height: 100vh;
+  bottom: -150vh;
+  width: 100%;
+  max-height: 100%;
+  min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1031,6 +1037,7 @@ a[data-arrow]:hover::after {
 }
 
 .soon.is-open {
+  top: 0;
   bottom: 0;
   opacity: 1;
 }
@@ -1103,20 +1110,59 @@ a[data-arrow]:hover::after {
 @media (max-width: 880px) {
   body,
   .wrapper {
-    max-width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
   }
   section {
     min-height: 100vh;
   }
+  .gnb {
+    z-index: 500;
+    height: 78px;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
   .gnb h1 {
-    display: none;
+    position: relative;
     padding: 16px 40px;
+    text-indent: -9999px;
+  }
+  .gnb h1::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 32px;
+    width: 20px;
+    height: 2px;
+    background: #000;
+  }
+  .gnb h1::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 40px;
+    width: 14px;
+    height: 2px;
+    background: #000;
   }
   .gnb nav {
     display: none;
   }
+  .gnb .btn-search {
+    top: 10px;
+    left: 100%;
+    margin-left: -80px;
+  }
+  .search-area input {
+    height: 78px;
+    background-position-x: 20px;
+    font-size: 18px;
+  }
+  .search-area .btn-close {
+    margin-top: 10px;
+  }
   .hero {
-    height: 100vh;
+    height: 96vh;
   }
   .hero .msg {
     -webkit-box-orient: vertical;
@@ -1129,7 +1175,10 @@ a[data-arrow]:hover::after {
     margin: 0;
     font-size: 48px;
   }
-  .hero .msg .desc {
+  .hero .msg .info-artist {
+    display: none;
+  }
+  .hero .msg p {
     margin-top: 16px;
     font-size: 16px;
   }
@@ -1204,6 +1253,11 @@ a[data-arrow]:hover::after {
   }
   .copyright nav a {
     font-size: 14px;
+  }
+  .soon {
+    z-index: 1200;
+    padding: 40px;
+    font-size: 12vw;
   }
 }
 /*# sourceMappingURL=yellowbox.css.map */

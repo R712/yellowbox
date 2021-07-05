@@ -165,6 +165,7 @@ const soonClose = document.querySelector('.soon button');
 const callSoon = document.querySelector('.gnb nav');
 const btnLang = document.querySelector('.select-lang button');
 const areaLang = document.querySelector('.select-lang');
+const logo = document.querySelector('.gnb h1');
 
 //
 //  모달 닫기 버튼 클릭시 모달 닫기
@@ -178,6 +179,10 @@ btnSearchClose.onclick = function() {
 }
 
 callSoon.onclick = function() {
+    soonLayer.classList.toggle('is-open');
+}
+
+logo.onclick = function() {
     soonLayer.classList.toggle('is-open');
 }
 
