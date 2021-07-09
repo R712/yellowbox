@@ -2,6 +2,8 @@
 ## YellowBox
 
 **👉🏻 preview - https://r712.github.io/yellowbox**
+**👉🏻 guide(check the blue) - https://r712.github.io/yellowbox/guide.html **
+가이드의 경우 필요하면 계속 추가될 예정입니다.
 
 - added coming soon design
 - added search areaCancel changes
