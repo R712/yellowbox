@@ -1082,3 +1082,31 @@ a[data-arrow] {
         font-size: 12vw;
     }
 }
+
+//
+//  가이드용 툴팁
+//
+[data-guide] {
+    position: relative;
+    &::after {
+        content: attr(data-guide);
+        z-index: 1000;
+        position: absolute;
+        left: 54%;
+        top: 50px;
+        padding: 12px;
+        max-width: 320px;
+        background: rgba(#0D65FF, .9);
+        color: $white;
+        font-size: 14px;
+        line-height: 21px;
+        word-break: keep-all;
+        backdrop-filter: blur(10px);
+        border-radius: 3px;
+        box-shadow: 0 8px 40px rgba(#0D65FF, .4);
+    }
+    img {
+        outline: 8px solid #0D65FF;
+        filter: none !important;
+    }
+}

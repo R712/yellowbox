@@ -1351,4 +1351,34 @@ a[data-arrow]:hover::after {
     font-size: 12vw;
   }
 }
+
+[data-guide] {
+  position: relative;
+}
+
+[data-guide]::after {
+  content: attr(data-guide);
+  z-index: 1000;
+  position: absolute;
+  left: 54%;
+  top: 50px;
+  padding: 12px;
+  max-width: 320px;
+  background: rgba(13, 101, 255, 0.9);
+  color: #FFF;
+  font-size: 14px;
+  line-height: 21px;
+  word-break: keep-all;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 3px;
+  -webkit-box-shadow: 0 8px 40px rgba(13, 101, 255, 0.4);
+          box-shadow: 0 8px 40px rgba(13, 101, 255, 0.4);
+}
+
+[data-guide] img {
+  outline: 8px solid #0D65FF;
+  -webkit-filter: none !important;
+          filter: none !important;
+}
 /*# sourceMappingURL=yellowbox.css.map */
