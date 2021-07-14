@@ -1,4 +1,5 @@
-# 💛
+# ![favicon](https://user-images.githubusercontent.com/1610919/125624795-4e6cfbbe-1485-425d-bc54-cae32d739cb8.png)
+
 ## YellowBox
 
 **👉🏻 preview - https://r712.github.io/yellowbox**
